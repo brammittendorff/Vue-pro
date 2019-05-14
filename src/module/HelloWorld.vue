@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <s-echarts></s-echarts>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -84,11 +85,15 @@
 </template>
 
 <script>
+import sEcharts from './ShowEcharts'
 export default {
+  components:{
+    sEcharts
+  },
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js + vuex App'
     }
   }
 }
