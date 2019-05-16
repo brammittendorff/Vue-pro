@@ -1,5 +1,5 @@
 <template>
-    <div :class="className" :id='id' :style="{'width':width, 'height': height,'overflow':'hidden'}"></div>
+    <div :class="className" :id='id' :style="{'width':width, 'height': height,'overflow':'hidden','margin':'0 auto'}"></div>
 </template>
 <script>
 import echarts from 'echarts'
