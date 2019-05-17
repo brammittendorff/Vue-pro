@@ -6,9 +6,12 @@ vue2+vuex的搭建使用和拆分
 #加载依赖包
 1.npm install
 
+#运行node  koa接口服务
+2.npm run koa
+
 #运行项目localhost:8080
-2.npm run dev  // npm start
+3.npm run dev  //或者 npm start
 
 #打包
-3.npm run build
+npm run build
 ```
