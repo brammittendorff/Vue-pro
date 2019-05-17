@@ -4,6 +4,7 @@ import router from './router'
 import { store } from './store/index'
 import axios from '@/components/tooltip/Http.js'
 import ElementUI from 'element-ui'
+import './assets/base.less'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
