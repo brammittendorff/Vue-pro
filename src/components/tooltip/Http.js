@@ -1,46 +1,45 @@
 import axios from 'axios'
-import router from 'vue-router';
-import { Loading, Message } from 'element-ui'
+import router from 'vue-router'
+// import { Loading , Message } from 'element-ui'
 
 axios.defaults.timeout = 5000
-var loadinginstace
+// var loadinginstace
 // 拦截请求config
 axios.interceptors.request.use(config => {
-  console.log(config,'/// console.log(config)')
-	// element ui Loading方法
-    // loadinginstace = Loading.service({ fullscreen: true })
-    config.headers['X-Requested-With'] = `XMLHttpRequest`;
-    config.headers['content-type'] = `application/json`;
-    if(config.method=='post'){
-        // config.data = qs.stringify(config.data)
-    }
+  console.log(config, '/// console.log(config)')
+  // element ui Loading方法
+  // loadinginstace = Loading.service({ fullscreen: true })
+  config.headers['X-Requested-With'] = `XMLHttpRequest`
+  config.headers['content-type'] = `application/json`
+  if (config.method === 'post') {
+    // config.data = qs.stringify(config.data)
+  }
 
-		return config
-	}, error => {
-		// loadinginstace.close()
-		// Message.error({
-		// 	message: '加载超时'
-		// })
-		// console.log('加载超时')
-	return Promise.reject(error)
+  return config
+}, error => {
+  // loadinginstace.close()
+  // Message.error({
+  // message: '加载超时'
+  // })
+  // console.log('加载超时')
+  return Promise.reject(error)
 })
 
 // 拦截响应response，并做一些错误处理
 axios.interceptors.response.use((response) => {
   console.log(response.data.code)
-		//对响应数据做些事
-    if(response.data.code == 401){
-    	router.push('/login')
-    }
-    else if(response.data.code==-1){
-      window.location.href='#/login'
-      // Message.error({
-      //   	message: response.data.msg
-      // })
-      return
-    }
-    // loadinginstace.close()
-    return response
+  // 对响应数据做些事
+  if (response.data.code === 401) {
+    router.push('/login')
+  } else if (response.data.code === -1) {
+    window.location.href = '#/login'
+    // Message.error({
+    //   message: response.data.msg
+    // })
+    return
+  }
+  // loadinginstace.close()
+  return response
 }, (err) => { // 这里是返回状态码不为200时候的错误处理
   if (err && err.response) {
     switch (err.response.status) {
