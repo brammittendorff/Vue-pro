@@ -10,7 +10,12 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static', // 虚拟静态资源地址
     assetsPublicPath: '/', 
-    proxyTable: {}, // 服务器代理
+    proxyTable: {
+      '/kapi': {
+        target: 'http://localhost:8887/',
+        changeOrigin: true
+      },
+    }, // 服务器代理
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
