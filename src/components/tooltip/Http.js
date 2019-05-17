@@ -6,7 +6,7 @@ axios.defaults.timeout = 5000
 // var loadinginstace
 // 拦截请求config
 axios.interceptors.request.use(config => {
-  console.log(config, '/// console.log(config)')
+  // console.log(config, '/// console.log(config)')
   // element ui Loading方法
   // loadinginstace = Loading.service({ fullscreen: true })
   config.headers['X-Requested-With'] = `XMLHttpRequest`
@@ -14,7 +14,7 @@ axios.interceptors.request.use(config => {
   if (config.method === 'post') {
     // config.data = qs.stringify(config.data)
   }
-
+ 
   return config
 }, error => {
   // loadinginstace.close()
@@ -27,16 +27,12 @@ axios.interceptors.request.use(config => {
 
 // 拦截响应response，并做一些错误处理
 axios.interceptors.response.use((response) => {
-  console.log(response.data.code)
   // 对响应数据做些事
-  if (response.data.code === 401) {
-    router.push('/login')
-  } else if (response.data.code === -1) {
-    window.location.href = '#/login'
-    // Message.error({
-    //   message: response.data.msg
-    // })
-    return
+  if(sessionStorage.getItem('user')&&sessionStorage.getItem('user')!='null'&&sessionStorage.getItem('user')!='undefined'){
+    router.push('/echarts')
+  }else{
+    router.push('/')
+    sessionStorage.removeItem('user')
   }
   // loadinginstace.close()
   return response

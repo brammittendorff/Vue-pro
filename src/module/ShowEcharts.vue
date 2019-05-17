@@ -1,8 +1,9 @@
 <template>
  <div class='content'>
-<div class='g-container g-box-shadow'>
-    <v-echarts id='echarts' width='800px' height='400px' :option='defaultOption' ></v-echarts>
-</div>
+  <a href="/#/vuex">前往vuex</a>
+  <div class='g-container g-box-shadow'>
+      <v-echarts id='echarts' width='800px' height='400px' :option='defaultOption' ></v-echarts>
+  </div>
 </div>
 </template>
 
@@ -128,7 +129,7 @@ export default {
       };
     }
   },
-  mounted () {
+  mounted() {
     this.getdata();
   }
 };
