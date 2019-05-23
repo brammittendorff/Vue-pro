@@ -4,8 +4,15 @@ import router from './router'
 import { store } from './store/index'
 import axios from '@/components/tooltip/Http.js'
 import ElementUI from 'element-ui'
-import './assets/base.less'
+import './assets/less/reset.less';
+import './assets/less/global.less';
+import './assets/less/lib/index.less';
+import filters from './components/util/filters'
 
+Object.keys(filters).forEach(key => {
+  console.log(filters,key,filters[key],'/././.....')
+Vue.filter(key, filters[key])
+})
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 axios.defaults.timeout = 100000
