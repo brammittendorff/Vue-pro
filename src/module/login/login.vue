@@ -1,5 +1,5 @@
 <template>
- <div class='content'>
+ <div class='login'>
 <canvas  style="background:#000000;" id="canvas"></canvas>
 
 <div class='g-container g-box-shadow'>
@@ -152,7 +152,7 @@ export default {
 };
 </script>
 <style lang='less' rel='stylesheet/less' scoped>
-.content {
+.login {
   width: 100%;
   height: 100vh;
   #canvas {
