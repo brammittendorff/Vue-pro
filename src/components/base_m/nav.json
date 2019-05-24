@@ -1,0 +1,49 @@
+{
+    "data": [
+        {
+            "id":"1",
+            "name":"首页",
+            "url": "/home"
+        },
+        {
+            "id":"2",
+            "name":"客户",
+            "url": "/customerlist"
+        },
+        {
+            "id":"3",
+            "name":"公众号",
+            "url": "/gzh"
+        },
+        {
+            "id":"4",
+            "name":"媒体管理",
+            "url": "/mediumgzhlist"
+        },
+        {
+            "id":"6",
+            "name":"排期",
+            "url": "/scheduling"
+        },
+        {
+            "id":"7",
+            "name":"财务",
+            "url": "/finance"
+        },
+        {
+            "id":"8",
+            "name":"数据",
+            "url": "/data"
+        },
+        {
+            "id":"9",
+            "name":"工具",
+            "url": "/checkarticles"
+        },
+        {
+            "id":"10",
+            "name":"设置",
+            "url": "/set"
+        }
+    ]
+}
