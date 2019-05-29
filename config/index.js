@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/', 
     proxyTable: {
       '/kapi': {
-        target: 'http://localhost:8887/',
+        target: 'http://localhost:8886/',
         changeOrigin: true
       },
     }, // 服务器代理
