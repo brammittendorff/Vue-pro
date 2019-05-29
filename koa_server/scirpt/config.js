@@ -10,7 +10,7 @@ const config = {
         proxy: "http://localhost:8887"
     },
     server: {
-        port: 8887
+        port: 8886
     },
     env: [
         {
