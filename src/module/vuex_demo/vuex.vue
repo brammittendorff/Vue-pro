@@ -12,17 +12,73 @@
     <div v-pre>v-pre跳过渲染</div>
     <input v-model.number.trim='number' placeholder="model修饰符" />
     <!-- <img src="./assets/logo.png"> -->
+      <tree :model="root" :length="length"></tree>
+
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from "vuex";
+import tree from "./tree.vue";
+
 export default {
+  components:{
+    tree
+  },
   data() {
     return {
       name: "大家好",
       html: "<h2>才是真的好</h2>",
-      number: ""
+      number: "",
+      
+      root: {
+        name: "根节点",
+        level: 0,
+        isOpen: true,
+        children: [
+          {
+            name: "节点1",
+            level: 1,
+            url: "/homePage/middle/navLeftFirst",
+            isOpen: true,
+            children: [
+              {
+                name: "节点1-1",
+                level: 2,
+                isOpen: true,
+                children: []
+              },
+              {
+                name: "节点1-2",
+                level: 2,
+                isOpen: true,
+                children: []
+              }
+            ]
+          },
+          {
+            name: "节点2",
+            level: 1,
+            url: "/homePage/middle/navLeftSecond",
+            isOpen: true,
+            children: [
+              {
+                name: "节点2-1",
+                level: 2,
+                isOpen: true,
+                children: []
+              },
+              {
+                name: "节点2-2",
+                level: 2,
+                isOpen: true,
+                children: []
+              }
+            ]
+          }
+        ]
+      },
+      length: 2
     };
   },
   computed: {
