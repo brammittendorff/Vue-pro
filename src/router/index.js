@@ -21,6 +21,15 @@ import organization from '@/module/set/module/organization'  //组织架构
 import pre_set from '@/module/set/module/pre_set'  //权限配置
 import operate_set from '@/module/set/module/operate_set' //操作权限
 import exit_branch from '@/module/set/module/exit_branch' //编辑部门
+    //财务
+// import finance from '@/module/finance/finance'  //财务
+// import customerback from '@/module/finance/module/customerback'  //客户回款
+// import cancelback from '@/module/finance/cancelback/index'  //回款核销
+// import cancelbackList from '@/module/finance/cancelback/list'  //回款核销列表
+// import cancelbackDetail from '@/module/finance/cancelback/detail'  //回款核销详情
+// import cancelbackDetailStay from '@/module/finance/cancelback/model/detail_stay'  //回款核销详情
+// import cancelbackDetailRecord from '@/module/finance/cancelback/model/detail_record'  //回款记录详情
+// import cancelbackDetailCancel from '@/module/finance/cancelback/model/detail_cancel'  //回款记录详情
 
 
 Vue.use(Router)
@@ -113,6 +122,46 @@ export default new Router({
           // }
       ]
   },
+  //核销
+//   {
+//     path:'/finance',
+//     component:finance,
+//     redirect:"/finance/customerback",
+//     children:[
+//         {
+//             path:'customerback',
+//             component:customerback
+//         },
+//         {
+//             path:'cancelback',
+//             component:cancelback,
+//             redirect: "/finance/cancelback/list",
+//             children: [{
+//                     path: "list",
+//                     component: cancelbackList
+//                 },
+//                 {
+//                     path: "detail",
+//                     component: cancelbackDetail,
+//                     redirect: "/finance/cancelback/detail/stay",
+//                     children: [{
+//                         path: "stay",
+//                         component: cancelbackDetailStay
+//                     },
+//                     {
+//                         path: "record",
+//                         component: cancelbackDetailRecord
+//                     },
+//                     {
+//                         path: "cancel",
+//                         component: cancelbackDetailCancel
+//                     }
+//                 ]
+//                 }
+//             ]
+//         }
+//     ]
+// },
     {
       path: '/echarts',
       component: echarts
