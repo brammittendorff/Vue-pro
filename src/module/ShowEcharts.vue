@@ -1,6 +1,19 @@
 <template>
  <div class='content'>
   <a href="/#/vuex">前往vuex</a>
+    <el-date-picker
+      v-model="value1"
+      type="date"
+      placeholder="选择日期">
+    </el-date-picker>
+    <el-select v-model="value" @change="languge" placeholder="请选择">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
   <div class='g-container g-box-shadow'>
       <v-echarts id='echarts' width='800px' height='400px' :option='defaultOption' ></v-echarts>
   </div>
@@ -23,6 +36,15 @@ export default {
   data() {
     return {
       defaultOption: {},
+      value1:'',
+      value:localStorage.getItem('language'),
+       options: [{
+          value: 'en',
+          label: '英文'
+        }, {
+          value: 'zh',
+          label: '中文'
+        },],
       tabdata:[
         {id:0,name:'tab11'},
         {id:1,name:'tab22'},
@@ -37,6 +59,10 @@ export default {
     vEcharts
   },
   methods: {
+    languge(){
+      this.$i18n.locale = this.value
+      localStorage.setItem('language',this.value)
+    },
     add(){
       console.log('add')
       this.showinput = true
