@@ -10,7 +10,7 @@ axios.interceptors.request.use(config => {
   // element ui Loading方法
   // loadinginstace = Loading.service({ fullscreen: true })
   config.headers['X-Requested-With'] = `XMLHttpRequest`
-  config.headers['content-type'] = `application/json`
+  // config.headers['content-type'] = `application/json`
   if (config.method === 'post') {
     // config.data = qs.stringify(config.data)
   }
@@ -28,11 +28,9 @@ axios.interceptors.request.use(config => {
 // 拦截响应response，并做一些错误处理
 axios.interceptors.response.use((response) => {
   // 对响应数据做些事
-  if(sessionStorage.getItem('user')&&sessionStorage.getItem('user')!='null'&&sessionStorage.getItem('user')!='undefined'){
-    router.push('/echarts')
-  }else{
-    router.push('/')
-    sessionStorage.removeItem('user')
+  if(window.location.hash!='#/login'&&sessionStorage.getItem('user')&&sessionStorage.getItem('user')!='null'&&sessionStorage.getItem('user')!='undefined'){
+    this.$router.push('/')
+  //   sessionStorage.removeItem('user')
   }
   // loadinginstace.close()
   return response
