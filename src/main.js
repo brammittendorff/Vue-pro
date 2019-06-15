@@ -8,7 +8,7 @@ import './assets/less/reset.less';
 import './assets/less/global.less';
 import './assets/less/lib/index.less';
 import filters from './components/util/filters'
-
+//语言设置
 import enLocale from 'element-ui/lib/locale/lang/en'
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import ElementLocale from 'element-ui/lib/locale'
@@ -20,7 +20,7 @@ const messages = {
   zh: {...zhLocale}
 }
 const i18n = new VueI18n({
-  locale: localStorage.getItem('language')||'en', 
+  locale: localStorage.getItem('language')||'zh', 
   messages, 
 })
 
@@ -29,21 +29,13 @@ ElementLocale.i18n((key, value) => i18n.t(key, value))
 
 Object.keys(filters).forEach(key => {
   console.log(filters,key,filters[key],'/././.....')
-Vue.filter(key, filters[key])
+  Vue.filter(key, filters[key])
 })
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 axios.defaults.timeout = 100000
 Vue.prototype.$axios = axios
 
-// router.beforeEach((to, from, next) => {
-//   console.log(localStorage.getItem('Login_token'))
-//   if (to.fullPath == "/inquirydetail/inquirydetail/inquirydetailchild2") {
-//     next("/inquirydetail/inquirydetailchild2")
-//   }
-//   next()
-// });
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   store,
