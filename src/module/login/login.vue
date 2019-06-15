@@ -1,50 +1,75 @@
 <template>
- <div class='login'>
-<canvas  style="background:#000000;" id="canvas"></canvas>
-
-<div class='g-container g-box-shadow'>
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-    <el-form-item label="姓名" prop="name">
-        <el-input type="name" v-model="ruleForm.name" autocomplete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="密码" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="确认密码" prop="checkPass">
-        <el-input type="password" v-model="ruleForm.checkPass" autocomplete="off"></el-input>
-        <!-- autocomplete  自动完成允许浏览器预测对字段的输入。当用户在字段开始键入时，浏览器基于之前键入过的值，应该显示出在字段中填写的选项。 -->
-    </el-form-item>
-    <el-form-item label="年龄" prop="age">
-        <el-input v-model.number="ruleForm.age" placeholder="必须年满18岁"></el-input>
-    </el-form-item>
-    <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
-        <el-button @click="resetForm('ruleForm')">注册</el-button>
-    </el-form-item>
-    </el-form>
-</div>
-</div>
+  <div class='login'>
+    <vcanvas  Width='100%' Height='100vh' Id="canvas"></vcanvas>
+      <div class='loginbox'>
+          <div class="logincheck">
+            <el-radio 
+              v-for="(ele,index) in num" 
+              :key="index" 
+              v-model="iflogin" 
+              :label="ele"  
+              border>
+              {{iflogin == '1'?'账户登录':'扫码登录'}}
+            </el-radio>
+          </div>
+          <p class="title">{{iflogin == '1'?'管理员账号登录':'管理员扫码登录'}}</p>
+          <el-collapse-transition name="el-zoom-in-center">
+            <el-form 
+              v-if="iflogin == '1'" 
+              :model="ruleForm" 
+              status-icon 
+              :rules="rules" 
+              ref="ruleForm"  
+              class="demo-ruleForm">
+              <el-form-item  prop="name">
+                  <el-input 
+                    type="name" 
+                    prefix-icon="el-icon-user" 
+                    placeholder="请输入您的姓名" 
+                    clearable 
+                    v-model="ruleForm.name" 
+                  ></el-input>
+              </el-form-item>
+              <el-form-item  prop="pass">
+                  <el-input 
+                    type="password" 
+                    prefix-icon="el-icon-goods" 
+                    placeholder="请输入您的密码" 
+                    clearable 
+                    v-model="ruleForm.pass" 
+                  ></el-input>
+              </el-form-item>
+              <el-form-item  prop="checkPass">
+                  <el-input 
+                    type="password" 
+                    prefix-icon="el-icon-goods" 
+                    placeholder="请确认您的密码" 
+                    clearable 
+                    v-model="ruleForm.checkPass" 
+                  ></el-input>
+              </el-form-item>
+              <el-form-item>
+                  <el-button type="primary" style="width:400px" @click="submitForm('ruleForm')">登录</el-button>
+              </el-form-item>
+            </el-form>
+          </el-collapse-transition>
+          <el-collapse-transition name="el-zoom-in-center">
+            <div class="weixin" v-if="iflogin == '2'" >
+              <img src="../../static/img/myweixin.png"/>
+              <p style="color:red">我是假的码</p>
+            </div>
+          </el-collapse-transition>
+      </div>
+  </div>
 </template>
 
 <script>
+import Vcanvas from "../../components/base_m/canvas";
 export default {
+  components: {
+    Vcanvas
+  },
   data() {
-    var checkAge = (rule, value, callback) => {
-      if (!value) {
-        return callback(new Error("年龄不能为空"));
-      }
-      setTimeout(() => {
-        if (!Number.isInteger(value)) {
-          callback(new Error("请输入数字值"));
-        } else {
-          if (value < 18) {
-            callback(new Error("必须年满18岁"));
-          } else {
-            callback();
-          }
-        }
-      }, 1000);
-    };
     var validatePass = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请输入密码"));
@@ -68,103 +93,72 @@ export default {
       ruleForm: {
         name: "",
         pass: "",
-        checkPass: "",
-        age: ""
+        checkPass: ""
       },
+      num: ["1", "2"],
+      iflogin: "",
       rules: {
         name: [{ required: true, message: "名字不为空", trigger: "blur" }],
         pass: [{ validator: validatePass, trigger: "blur" }],
-        checkPass: [{ validator: validatePass2, trigger: "blur" }],
-        age: [{ validator: checkAge, trigger: "blur" }]
+        checkPass: [{ validator: validatePass2, trigger: "blur" }]
       }
     };
   },
   mounted() {
-    var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    var s = window.screen;
-    var w = s.width;
-    var h = s.height;
-    canvas.width = w;
-    canvas.height = h;
-    var fontSize = 14;
-    var clos = Math.floor(w / fontSize);
-    var drops = [];
-    var str = "zhangbaoxihuanmishasha";
-    for (var i = 0; i < clos; i++) {
-      drops.push(0);
-    }
-    function drawString() {
-      ctx.fillStyle = "rgba(0,0,0,0.05)";
-      ctx.fillRect(0, 0, w, h);
-      ctx.font = "600 " + Math.round(Math.random() * 30) + "px";
-      var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-      gradient.addColorStop("0", "#ff0000");
-      gradient.addColorStop("0.2", "#ec00ff");
-      gradient.addColorStop("0.4", "#00dfff");
-      gradient.addColorStop("0.6", "#00ff10");
-      gradient.addColorStop("0.8", "#cfff00");
-      gradient.addColorStop("1.0", "#ff7e00");
-      ctx.fillStyle = gradient;
-      // ctx.fillStyle = "#00ff00";
-      for (var i = 0; i < clos; i++) {
-        var x = i * fontSize;
-        var y = drops[i] * fontSize;
-        ctx.fillText(str[Math.floor(Math.random() * str.length)], x, y);
-        if (y > h && Math.random() > 0.99) {
-          drops[i] = 0;
-        }
-        drops[i]++;
-      }
-      window.requestAnimationFrame(drawString);
-    }
-    // setInterval(drawString,20);
-    window.requestAnimationFrame(drawString);
+    this.iflogin = "1";
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          console.log("submit!");
           this.$axios
-            .post("/kapi/login", this.ruleForm)
+            .post("/kapi/login",this.ruleForm)
             .then(res => {
               if (res.data.code == 200) {
-                sessionStorage.setItem("user", res.data.data.name);
-                this.$router.push({ path: "/echarts" });
+                sessionStorage.setItem("user", JSON.stringify(res.data.data));
+                window.location.href = '/'
               }
             })
             .catch(err => {
-              console.log(err && err.data, "err");
-              this.$router.push({ path: "/echarts" });
               sessionStorage.setItem("user", " res.data.data.name");
             });
         } else {
-          console.log("error submit!!");
           return false;
         }
       });
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields();
     }
   }
 };
 </script>
 <style lang='less' rel='stylesheet/less' scoped>
 .login {
-  width: 100%;
-  height: 100vh;
-  #canvas {
-    width: 100%;
-    height: 100vh;
-  }
-  .g-container {
+  .loginbox {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px 30px;
+    .logincheck {
+      position: absolute;
+      top: -52px;
+      left: 0px;
+      background: #fff;
+      width: 460px;
+      padding: 5px 0px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+  }
+  .weixin {
+    margin-bottom: 30px;
   }
 }
 </style>
