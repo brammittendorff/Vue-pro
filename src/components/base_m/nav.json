@@ -2,43 +2,28 @@
     "data": [
         {
             "id":"1",
-            "name":"首页",
+            "name":"个人主页",
             "url": "/home"
         },
         {
             "id":"2",
-            "name":"客户",
-            "url": "/customerlist"
+            "name":"Vuex",
+            "url": "/vuex"
         },
         {
             "id":"3",
-            "name":"公众号",
-            "url": "/gzh"
-        },
-        {
-            "id":"4",
-            "name":"媒体管理",
-            "url": "/mediumgzhlist"
-        },
-        {
-            "id":"6",
-            "name":"排期",
-            "url": "/scheduling"
+            "name":"Echarts",
+            "url": "/echarts"
         },
         {
             "id":"7",
-            "name":"财务",
+            "name":"预算",
             "url": "/finance"
         },
         {
             "id":"8",
-            "name":"数据",
+            "name":"数据列表",
             "url": "/data"
-        },
-        {
-            "id":"9",
-            "name":"工具",
-            "url": "/checkarticles"
         },
         {
             "id":"10",

@@ -3,7 +3,7 @@
         <div id="logo" style="display:flex;align-items: center;">
             <h1 class="g-fl"><img class="" src="../../static/img/bao.jpg" alt="代理商平台"></h1>
             <div class="g-fl shu" ></div>
-            <p class="g-fl">baby张系统</p>
+            <p class="g-fl">baby张后台</p>
         </div>
         <div class="topMenu header_class">
             <el-menu :default-active="navActive" :router="true" mode="horizontal" @select="handleSelect">
@@ -33,22 +33,22 @@
                 </span>
                 <el-dropdown-menu slot="dropdown" style="margin-top:8px;">
                     <el-dropdown-item  class="clearfix">
-                    <a @click="jumptoxx">待处理询价单(销售)
+                    <a >老朋友
                         <el-badge class="mark" :value="sellmes.pending_ask_price" />
                     </a>
                     </el-dropdown-item>
                     <el-dropdown-item  class="clearfix">
-                    <a @click="jumptoxy">待处理预订单（销售）
+                    <a >新朋友
                         <el-badge class="mark" :value="sellmes.pending_destine"/>
                     </a>
                     </el-dropdown-item>
                     <el-dropdown-item  class="clearfix">
-                    <a @click="jumptomx">待处理询价单(媒介)
+                    <a >女朋友
                         <el-badge class="mark" :value="mediummes.pending_ask_price" />
                     </a>
                     </el-dropdown-item>
                     <el-dropdown-item  class="clearfix">
-                    <a @click="jumptomy">待处理预订单（媒介）
+                    <a >男朋友
                         <el-badge class="mark" :value="mediummes.pending_destine" />
                     </a>
                     </el-dropdown-item>
@@ -58,7 +58,7 @@
          
         
         <div class="myMessage g-fr">
-          <a class="oldcrm" href="/customer/login_old_crm" target="_blank">老入口</a>
+          <a class="oldcrm"  target="_blank">语言设置</a>
         </div>
         <!-- <div class="myMessage g-fr">
           <span @click="exportExcel()" style="cursor:pointer">
@@ -102,8 +102,7 @@ export default {
   },
  
   mounted() {
-    this.getUserInfo();//获取登录信息
-    console.log(topData,'topData')
+    console.log(topData,this.$route,'topData')
   },
   methods: {
 
@@ -113,22 +112,9 @@ export default {
 
     // 退出登录
     loginOut() {
-      this.$router.push({ path: "/login" });
-    },
-    jumptoxx() {
-    //   this.$router.push({ path: "/" });
-    },
-    jumptoxy() {
-    //   this.$router.push({ path: "/" });
-    },
-    jumptomx() {
-    //   this.$router.push({path: "/"});
-    },
-    jumptomy() {
-    //   this.$router.push({ path: "/" });
-    },
-    getUserInfo() {
-
+      sessionStorage.removeItem('user')
+      // this.$router.push({ path: "/login" });
+      window.location.href = '/'
     },
 
     handleCommand(command) {
@@ -148,12 +134,13 @@ export default {
   }
 };
 </script>
-<style scoped lang='less' rel='stylesheet/less'>
+<style scoped lang='less' >
 .exitimg {
   width: 20px;
   float: right;
   margin-right: 15px;
   margin-top: 17px;
+  cursor: pointer;
 }
 .oldcrm {
   color: #ff8800;
@@ -161,19 +148,15 @@ export default {
   border-radius: 6px;
   padding: 3px 10px;
 }
-// .oldxg {
-//   color: #bdbdbd;
-//   border-radius: 6px;
-//   padding: 3px 10px;
-// }
 .header {
-  position: relative;
+  position: fixed;
   box-sizing: border-box;
   min-width: 510px;
   width: 100%;
   height: 50px;
+  background: #fff;
   border-bottom: 1px solid #f0f0f0;
-  // z-index: 1000;
+  z-index: 1000;
   #logo {
   float: left;
   width: 300px;
