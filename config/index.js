@@ -20,7 +20,7 @@ module.exports = {
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // 本地服务器开启的端口。如果被占用,则会自动开启一个端
-    autoOpenBrowser: false, // 服务开启是否自动打开浏览器
+    autoOpenBrowser: true, // 服务开启是否自动打开浏览器
     errorOverlay: true, // 是否错误叠加
     notifyOnErrors: true, // 是否通知错误
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
