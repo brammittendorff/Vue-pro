@@ -1,11 +1,11 @@
-## vue2-vuex
-vue2+vuex的搭建使用和拆分
+
+## vue-vuex-koa-axios-echarts-canvas-element技术栈
 
 ```java
 #加载依赖包
 1.npm install
 
-#运行node  koa接口服务
+#先运行koa 用于登录调接口使用
 2.npm run koa
 
 #运行项目localhost:8080
