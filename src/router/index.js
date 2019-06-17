@@ -38,12 +38,26 @@ if (user) {
     {
       path: '/',
       component: home,
-      redirect: '/home/homelist',
+      redirect: '/home',
       children: [
         {
-          path: '/home/homelist',
+          path: '/home',
           component: homelist,
-          children:[]
+          redirect: '/home/statistics',
+          children:[
+            {
+              path:'/home/statistics',
+              // component:statistics,
+            },
+            {
+              path:'/home/owner',
+              // component:owner,
+            },
+            {
+              path:'/home/pic',
+              // component:pic,
+            }
+          ]
         },
         {
           path: '/echarts',
