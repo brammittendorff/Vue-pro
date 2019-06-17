@@ -16,13 +16,6 @@
 </script>
 
 <style scoped lang='less' rel='stylesheet/less'>
-    .sidebar{
-        display: block;
-        position: absolute;
-        width: 300px;
-        left: 0;
-        top: 50px;
-        bottom:0;
-        background: #0F1014;
-    }
+</style>
+<style lang='less' rel='stylesheet/less'>
 </style>
