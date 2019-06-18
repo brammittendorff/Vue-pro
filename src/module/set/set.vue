@@ -5,7 +5,7 @@
                 <v-side></v-side>
             </template>
         </v-sidebar>
-        <div class="content" :style="{left:conLeft}">
+        <div class="content" :style="conLeft">
             <transition name="move" mode="out-in">
                 <router-view></router-view>
             </transition>
@@ -25,7 +25,7 @@
         data(){
             return{
                 sideWidth:'160px',
-                conLeft:'160px'
+                conLeft:'margin-left:160px'
             }
         },
 
