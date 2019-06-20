@@ -71,8 +71,8 @@ export default {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 .el-menu--horizontal > .el-menu-item.is-active {
-  border-bottom: 2px solid #ff8800;
-  color: #ff8800;
+  border-bottom: 2px solid #409eff;
+  color: #409eff;
 }
 </style>
 

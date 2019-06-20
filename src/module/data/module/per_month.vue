@@ -42,19 +42,12 @@
             </el-form-item>
 
              <el-form-item label="客户名称：">
-                 <el-autocomplete
-                  clearable 
-                  size="small"
-                  v-model="searchform.name"
-                  style="width:300px"
-                  :fetch-suggestions="querySearchAsync"
-                  placeholder="请选择客户"
-                  @select="getDatabefor"
-                  :select-when-unmatched="true"
-                  @keyup.enter.native="getData"
-                  @clear="clearCustomer"
-                  >
-              </el-autocomplete>
+                  <el-input  
+                    clearable 
+                    size="small" 
+                    v-model="searchform.name"
+                    @keyup.enter.native="getData"
+                    placeholder="请选择客户"></el-input>
             </el-form-item>
 
             <el-form-item>
@@ -67,7 +60,7 @@
          </el-form>
 
      </div>
-     <p class="price">业绩：<span style="color:#ff8800">￥50000</span></p>
+     <p class="price">业绩：<span style="color:#409eff">￥50000</span></p>
      <div class="list">
           <el-table
             :data="tableData"
@@ -111,96 +104,16 @@
 </template>
 
 <script>
+import months from '../../../components/base_m/month'
+import selects from '../../../components/base_m/select'
+import tables from '../../../components/base_m/table'
 export default {
   data () {
     return {
-        month:[{
-          value: '1',
-          label: '一月'
-        },{
-          value: '2',
-          label: '二月'
-        },{
-          value: '3',
-          label: '三月'
-        },{
-          value: '4',
-          label: '四月'
-        },{
-          value: '5',
-          label: '五月'
-        },{
-          value: '6',
-          label: '六月'
-        },{
-          value: '7',
-          label: '七月'
-        },{
-          value: '8',
-          label: '八月'
-        },{
-          value: '9',
-          label: '九月'
-        },{
-          value: '10',
-          label: '十月'
-        },{
-          value: '11',
-          label: '十一月'
-        },{
-          value: '12',
-          label: '十二月'
-        },
-        ],
-        group: [{
-          value: '选项1',
-          label: '黄金糕'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }],
-        persons: [{
-          value: '选项1',
-          label: '全部'
-        }, {
-          value: '选项2',
-          label: '双皮奶'
-        }, {
-          value: '选项3',
-          label: '蚵仔煎'
-        }, {
-          value: '选项4',
-          label: '龙须面'
-        }, {
-          value: '选项5',
-          label: '北京烤鸭'
-        }],
-         tableData: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }],
+        month:months.data,
+        group: selects.data,
+        persons:selects.data,
+        tableData:tables.data,
         searchform:{
             group:'选项1',
             person:'选项1',
@@ -213,7 +126,6 @@ export default {
         total:100,
         customerNames:[],
         customer_id:'',
-        exportloading: true,//正在导出
     }
   },
   components: {},
@@ -234,70 +146,11 @@ export default {
       //excel导出
       excel(){
           if (this.total) {
-            if (this.exportloading && this.total) {
-              this.exportloading = false;
-              this.$axios
-                .post("/kapi/import/aibrand", this.searchform)
-                .then(e => {
-                  this.$store.dispatch("getExcelNum");
-                  this.exportloading = true;
-                  this.$confirm("业绩月报正在导出，是否显示导出列表?", "提示", {
-                    confirmButtonText: "确定",
-                    cancelButtonText: "取消",
-                    type: "warning"
-                  })
-                    .then(() => {
-                      this.showDialog.show = true;
-                    })
-                    .catch(() => {});
-                });
-            }
           } else {
             this.$message.error("暂无数据可以导出");
           }
       },
-        //获取客户
-      querySearchAsync(queryString, cb) {
-      if (this.isLoading) {
-        return;
-      }
-      this.customer_id = '',
-      this.$axios
-        .get("/data_analysis/get_customer_selections", {
-          params: {
-            name:this.searchform.name
-          }
-        })
-        .then(res => {
-          this.customerNames = [];
-          res.data.data.map(el => {
-            let obj = {
-              value: el.company,
-              names: el.id
-            };
-            this.customerNames.push(obj);
-          });
-          cb(this.customerNames);
-          // this.isLoading = false;
-          // this.getData()
-        });
-    },
-      //客户选择前获取id
-    getDatabefor(){
-      this.customerNames.map(item =>{
-        if(item.value == this.searchform.name){
-          this.searchform.customer_id = item.names
-        }
-      })
-    //   this.getData();
-    //   this.gettop();
-    },
-    clearCustomer(){
-      this.searchform.customer_id=''
-      this.searchform.name=''
-    //   this.getData()
-    //   this.gettop()
-    },
+    
     getData(){
 
     }
@@ -314,7 +167,7 @@ export default {
     margin-top: 15px;
     border-radius: 6px;
     .search{
-
+      text-align: left;
     }
     .price{
         text-align:right;

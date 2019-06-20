@@ -367,9 +367,9 @@
         .dot {
             width: 1px;
             height: 23px;
-            background: #ff8800;
+            background: #409eff;
             border-radius: 2px;
-            border: 2px solid #ff8800;
+            border: 2px solid #409eff;
         }
         .font_20 {
             font-size: 20px;

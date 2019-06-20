@@ -262,7 +262,7 @@
               <el-switch
               v-model="value2"
               @change="isSeeAll"
-              active-color="#ff8800" 
+              active-color="#409eff" 
               inactive-color="#ccc">
             </el-switch>
           </div>
@@ -295,11 +295,11 @@
                   </div>
                   <div>
                     <img  src="@/static/img/view.png" style="width:24px;height:24px;vertical-align:middle" >
-                    <span style="margin-right:4px;color:#ff8800;font-size:14px">{{item.read_num}}</span>
+                    <span style="margin-right:4px;color:#409eff;font-size:14px">{{item.read_num}}</span>
 
 
                     <img  src="@/static/img/RMB.png" style="width:20px;height:20px;vertical-align:middle" >
-                    <span :style="item.price_type==1? 'color:#ff8800;font-size:14px':'font-size:14px'">{{item.price}}</span>
+                    <span :style="item.price_type==1? 'color:#409eff;font-size:14px':'font-size:14px'">{{item.price}}</span>
 
                   </div>
                 </li>
@@ -738,9 +738,9 @@ export default {
   .dot {
     width: 1px;
     height: 20px;
-    background: #ff8800;
+    background: #409eff;
     border-radius: 2px;
-    border: 2px solid #ff8800;
+    border: 2px solid #409eff;
   }
 .conter {
 //   display: flex;

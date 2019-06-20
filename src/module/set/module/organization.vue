@@ -10,7 +10,7 @@
         :default-expanded-keys='[7]'
         :expand-on-click-node="false">
         <span class="custom-tree-node" slot-scope="{ node, data }">
-            <span>{{ data.label }}</span>
+            <span ><i class="el-icon-document"></i>&ensp;{{ data.name }}</span>
         </span>
         </el-tree>
         <p class="exit" @click="exit_branch">编辑部门</p>
@@ -103,70 +103,9 @@
 </template>
 
 <script>
+import datas from "./data";
 export default {
   data() {
-    const data = [
-      {
-        id: 1,
-        label: "面朝",
-        children: [
-          {
-            id: 4,
-            label: "销售部",
-            children: [
-              {
-                id: 7,
-                label: "飞虎队"
-              },
-              {
-                id: 8,
-                label: "雷霆队"
-              },
-              {
-                id: 9,
-                label: "星火队"
-              },
-              {
-                id: 10,
-                label: "冲锋队"
-              },
-              {
-                id: 11,
-                label: "渠道组"
-              },
-              {
-                id: 12,
-                label: "政委组"
-              },
-              {
-                id: 13,
-                label: "测试001"
-              },
-              {
-                id: 14,
-                label: "战狼组"
-              }
-            ]
-          },
-            {
-                id: 2,
-                label: "媒体运营部"
-            },
-            {
-                id: 3,
-                label: "增值部"
-            },
-            {
-                id: 5,
-                label: "财务"
-            },
-            {
-                id: 6,
-                label: "外部渠道"
-            }
-        ]
-      }
-    ];
     return {
       searchform: {
         name: "",
@@ -184,7 +123,7 @@ export default {
       rules: {
         name: [{ required: true, message: "角色名称不能为空", trigger: "blur" }]
       },
-      data: data,
+      data: datas.data,
       tableData: [
         {
           date: "2016-05-02",
@@ -238,63 +177,6 @@ export default {
 
         }
       ],
-      data2: [
-        {
-          id: 1, //部门id
-          name: "优粉吧", //部门名称
-          parent_id: 0, //上级部门id
-          user_id: 44, //主管用户id
-          updated_at: "2019-05-20 19:48:50",
-          created_at: "2019-05-20 19:48:50",
-          user: {
-            //主管用户信息
-            id: 44,
-            username: "xixihaha",
-            nickname: null,
-            real_name: "天才",
-            password: "12345",
-            department_id: 5,
-            last_login_time: null,
-            last_login_ip: "",
-            avatar: "",
-            updated_at: "2019-05-22 14:21:09",
-            created_at: "2019-05-22 14:21:09",
-            status: 1,
-            deleted_at: null
-          },
-          children: [
-            //下级部门
-            {
-              id: 3,
-              name: "销售部",
-              parent_id: 1,
-              user_id: null,
-              updated_at: "2019-05-20 20:12:44",
-              created_at: "2019-05-20 20:12:44",
-              children: null
-            },
-            {
-              id: 4,
-              name: "技术部",
-              parent_id: 1,
-              user_id: null,
-              updated_at: "2019-05-20 20:25:25",
-              created_at: "2019-05-20 20:25:25",
-              children: [
-                {
-                  id: 5,
-                  name: "crm",
-                  parent_id: 4,
-                  user_id: 44,
-                  updated_at: "2019-05-20 20:25:54",
-                  created_at: "2019-05-20 20:25:54",
-                  children: null
-                }
-              ]
-            }
-          ]
-        }
-      ]
     };
   },
 
@@ -373,19 +255,19 @@ export default {
   min-height: calc(~"100vh - 120px");
   position: relative;
   .tree {
-    width: 160px;
+    min-width: 160px;
     position: absolute;
     left: 0px;
     // min-height: calc(~"100vh - 120px");
-    border: 1px solid #ff880052;
+    border: 1px solid #409eff52;
     .title {
-      background: #ff880052;
+      background: #409eff52;
       text-align: center;
       padding: 5px;
       font-weight: 600;
     }
     .exit {
-      background: #ff880052;
+      background: #409eff52;
       text-align: center;
       padding: 5px;
       cursor: pointer;
@@ -407,6 +289,7 @@ export default {
     top: 30px;
     .search {
     }
+    text-align: left;
     .all_list {
 
     }
@@ -419,13 +302,6 @@ export default {
 </style>
 <style rel='stylesheet/less' lang='less'>
 .organization {
-  .tree {
-    .el-icon-caret-right:before {
-      content: "\E60E";
-      margin: 22px 0;
-      border-left: 1px solid #d9d9d9;
-    }
-  }
   .list{
       .has-gutter{
           tr{
