@@ -22,6 +22,7 @@
                     </span>
                 </span>
         </div>
+         <el-divider direction="vertical"></el-divider>
         <div class="myMessage g-fr">
             <i class="icon"></i>
             <el-dropdown trigger="hover">
@@ -34,22 +35,22 @@
                 <el-dropdown-menu slot="dropdown" style="margin-top:8px;">
                     <el-dropdown-item  class="clearfix">
                     <a >老朋友
-                        <el-badge class="mark" :value="sellmes.pending_ask_price" />
+                        <el-badge class="mark" type="primary" :value="sellmes.pending_ask_price" />
                     </a>
                     </el-dropdown-item>
                     <el-dropdown-item  class="clearfix">
-                    <a >新朋友
-                        <el-badge class="mark" :value="sellmes.pending_destine"/>
+                    <a >新朋友 
+                        <el-badge class="mark" type="primary" :value="sellmes.pending_destine"/>
                     </a>
                     </el-dropdown-item>
                     <el-dropdown-item  class="clearfix">
                     <a >女朋友
-                        <el-badge class="mark" :value="mediummes.pending_ask_price" />
+                        <el-badge class="mark" type="primary" :value="mediummes.pending_ask_price" />
                     </a>
                     </el-dropdown-item>
                     <el-dropdown-item  class="clearfix">
                     <a >男朋友
-                        <el-badge class="mark" :value="mediummes.pending_destine" />
+                        <el-badge class="mark" type="primary" :value="mediummes.pending_destine" />
                     </a>
                     </el-dropdown-item>
                 </el-dropdown-menu>
@@ -143,8 +144,8 @@ export default {
   cursor: pointer;
 }
 .oldcrm {
-  color: #ff8800;
-  border: 1px solid #ff8800;
+  color: #409EFF;
+  border: 1px solid #409EFF;
   border-radius: 6px;
   padding: 3px 10px;
 }
@@ -198,12 +199,12 @@ export default {
         line-height: 50px;
         border-bottom: 2px solid transparent;
         &.is-active {
-          border-bottom: 2px solid #ff9d00;
+          border-bottom: 2px solid #409EFF;
         }
         &:hover {
           color: #868686;
           background-color: none !important;
-          border-bottom: 2px solid #ff9d00;
+          border-bottom: 2px solid #409EFF;
         }
       }
     }
@@ -282,7 +283,7 @@ export default {
     }
     ul .el-menu-item:active {
       color: #fff !important;
-      background: #ff8800 !important;
+      background: #409EFF !important;
       border-radius: 20px !important;
       border-bottom: 0px solid transparent;
       line-height: 20px !important;
@@ -290,7 +291,7 @@ export default {
     }
     ul .el-menu-item.is-active {
       color: #fff !important;
-      background: #ff8800 !important;
+      background: #409EFF !important;
       border-radius: 20px !important;
       border-bottom: 0px solid transparent;
       line-height: 20px !important;
