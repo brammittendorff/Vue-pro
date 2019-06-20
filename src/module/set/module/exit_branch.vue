@@ -1,16 +1,16 @@
 <template>
  <div class="exit_branch">
-    <p class="title">部门结构</p>
+      <p class="title">部门结构&emsp;&emsp;<span class="back" @click="back"><i class="
+    el-icon-d-arrow-left"></i>返回用户管理列表</span></p>
     <div class="tree">
         <el-tree
         :data="data"
         node-key="id"
         default-expand-all
-        :default-expanded-keys='[7]'
         :expand-on-click-node="false">
-        <span class="custom-tree-node" slot-scope="{ node, data }">
-            <span>{{ data.label }}</span>
-            <span>
+        <span class="custom-tree-node"  @mouseenter="enter(data)" @mouseleave="leave()" slot-scope="{ node, data }">
+            <span ><i class="el-icon-document"></i>&ensp;{{ data.name }}</span>
+            <span :class="mouseid==data.id?'block':'none'">
                 <el-button
                     v-show="data.children?false:true"
                     type="text"
@@ -57,22 +57,25 @@
 </template>
 
 <script>
-  let id = 1000;
+let id = 1000;
+import datas from "./data";
 export default {
-  data () {
+  data() {
     return {
-        loading:false,
-        exitshow:false,
-        ruleForm:{
-            exitval:''
-        },
-        data: null,
-        rules: {
-          exitval: [
-            { required: true, message: '部门名称不为空', trigger: 'blur' }
-          ],
-        }
-     };
+      loading: false,
+      exitshow: false,
+      ruleForm: {
+        exitval: ""
+      },
+      mouseid: "",
+      datas: datas.data,
+      data: null,
+      rules: {
+        exitval: [
+          { required: true, message: "部门名称不为空", trigger: "blur" }
+        ]
+      }
+    };
   },
 
   components: {},
@@ -80,123 +83,93 @@ export default {
   computed: {},
 
   methods: {
-      exit(node,data){
-        this.ruleForm.exitval = data.label
-        this.exitshow = true
-      },
-      
-      exitFun(formName){
-           this.$refs[formName].validate(val =>{
-              if(val){
-                this.exitshow = false
-                const parent = node.parent;
-                const children = parent.data.children || parent.data;
-                const index = children.findIndex(d => d.id === data.id);
-                this.$set(children[index], 'label', this.ruleForm.exitval);
-                // this.getdata(this.data)
-              }
-          })
-            
-      },
-       append(node,data) {
-        const newChild = { id: id++, label: '新部门'};
-        if (!data.children) {
-          this.$set(data, 'children', []);
+    back() {
+      this.$router.push({ path: `/set/organization` });
+    },
+    exit(node, data) {
+      this.ruleForm.exitval = data.label;
+      this.exitshow = true;
+    },
+    enter(data) {
+      this.mouseid = data.id;
+    },
+    leave() {
+      this.mouseid = "";
+    },
+    exitFun(formName) {
+      this.$refs[formName].validate(val => {
+        if (val) {
+          this.exitshow = false;
+          const parent = node.parent;
+          const children = parent.data.children || parent.data;
+          const index = children.findIndex(d => d.id === data.id);
+          this.$set(children[index], "label", this.ruleForm.exitval);
+          // this.getdata(this.data)
         }
-        data.children.push(newChild);
-         console.log(data,node,this.data,'append')
-
-        // this.getdata(this.data)
-      },
-
-      remove(node, data) {
-        this.$confirm(`确认删除,${data.label}？`)
-          .then(_ => {
-        const parent = node.parent;
-        const children = parent.data.children || parent.data;
-        const index = children.findIndex(d => d.id === data.id);
-        children.splice(index, 1);
-         console.log(data,node,this.data,'remove')
-        // this.getdata(this.data)
-         })
-          .catch(_ => {});
-      },
-     getdata(data){
-         if(data){
-        this.data = data
-         this.$set(this.data,data)
-         }else{
-         this.data = [{
-        id: 1,
-        label: '面朝',
-        children: [{
-          id: 4,
-          label: '销售部',
-          children: [{
-            id: 7,
-            label: '飞虎队'
-          }, {
-            id: 8,
-            label: '雷霆队'
-          }, {
-            id: 9,
-            label: '星火队'
-          }, {
-            id: 10,
-            label: '冲锋队'
-          }, {
-            id: 11,
-            label: '渠道组'
-          }, {
-            id: 12,
-            label: '政委组'
-          }, {
-            id: 13,
-            label: '测试001'
-          }, {
-            id: 14,
-            label: '战狼组'
-          }]
-            }, {
-            id: 2,
-            label: '媒体运营部',
-        }, {
-            id: 3,
-            label: '增值部'
-        }, {
-            id: 5,
-            label: '财务'
-        }, {
-            id: 6,
-            label: '外部渠道'
-        }
-        ]
-      }]
+      });
+    },
+    append(node, data) {
+      const newChild = { id: id++, label: "新部门" };
+      if (!data.children) {
+        this.$set(data, "children", []);
       }
-     }
+      data.children.push(newChild);
+      console.log(data, node, this.data, "append");
+    },
+
+    remove(node, data) {
+      this.$confirm(`确认删除,${data.label}？`)
+        .then(_ => {
+          const parent = node.parent;
+          const children = parent.data.children || parent.data;
+          const index = children.findIndex(d => d.id === data.id);
+          children.splice(index, 1);
+          console.log(data, node, this.data, "remove");
+          // this.getdata(this.data)
+        })
+        .catch(_ => {});
+    },
+    getdata(data) {
+      if (data) {
+        this.data = data;
+        this.$set(this.data, data);
+      } else {
+        this.data = this.datas;
+      }
+    }
   },
 
- mounted() {
-     this.getdata();
- },
-}
-
+  mounted() {
+    this.getdata();
+  }
+};
 </script>
 <style lang='less' rel='stylesheet/less' scoped>
-.exit_branch{
-    background: #fff;
-    border-radius: 6px;
-    min-height: calc(~'100vh - 120px');
-    .title{
-        font-size: 16px;
-        padding: 10px;
-        background: #ececec;
+.exit_branch {
+  background: #fff;
+  border-radius: 6px;
+  min-height: calc(~"100vh - 120px");
+  .title {
+    font-size: 16px;
+    text-align: left;
+    padding: 10px;
+    background: #ececec;
+    .back {
+      color: #bf6c23;
+      cursor: pointer;
     }
-    .tree{
-        width: 400px;
-        padding: 20px 10px;
+  }
+  .tree {
+    width: 400px;
+    padding: 20px 10px;
+    .none {
+      display: none;
     }
- .custom-tree-node {
+    .block {
+      display: block;
+    }
+  }
+  .custom-tree-node {
     flex: 1;
     display: flex;
     align-items: center;
@@ -207,15 +180,15 @@ export default {
 }
 </style>
 <style rel='stylesheet/less' lang='less'>
-
-.exit_branch{
-    .tree{
-        .el-icon-caret-right:before {
-            content: "\E60E";
-            margin: 22px 0;
-            border-left: 1px solid #d9d9d9;
-        }
+.exit_branch {
+  .tree {
+    .expanded{
+      color:#5f5f5f;
     }
+    .el-icon-caret-right:before {
+      margin: 22px 0;
+      border-left: 1px solid #c7c7c7;
+    }
+  }
 }
-
 </style>

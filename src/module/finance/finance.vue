@@ -5,7 +5,7 @@
                 <v-side></v-side>
             </template>
         </v-sidebar>
-        <div class="content" :style="{left:conLeft}">
+        <div class="content" :style="conLeft">
             <transition name="move" mode="out-in">
                 <router-view></router-view>
             </transition>
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-    import vSidebar from '@/components/common/Sidebar.vue';
-    import vSide from '@/views/FinanceSide.vue';
+    import vSidebar from '../../components/base_m/Sidebar';
+    import vSide from './side';
 
     export default {
         components:{
@@ -25,7 +25,7 @@
         data(){
             return{
                 sideWidth:'160px',
-                conLeft:'160px'
+                conLeft:'margin-left:160px'
             }
         }
     }

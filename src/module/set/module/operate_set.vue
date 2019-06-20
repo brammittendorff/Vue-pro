@@ -31,7 +31,7 @@
             :default-checked-keys="[5]"
             :expand-on-click-node="false">
             <span class="custom-tree-node" slot-scope="{ node, data }">
-                <span>{{ data.label }}</span>
+                <span ><i class="el-icon-document"></i>&ensp;{{ data.name }}</span>
             </span>
         </el-tree>
         <div class="fotter">
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import datas from './data'
 export default {
   data () {
     return {
@@ -66,6 +67,7 @@ export default {
           value: '选项5',
           label: '北京烤鸭'
         }],
+        datas:datas.data,
     };
   },
 
@@ -88,52 +90,7 @@ export default {
         this.data = data
          this.$set(this.data,data)
          }else{
-         this.data = [{
-        id: 1,
-        label: '面朝',
-        children: [{
-          id: 4,
-          label: '销售部',
-          children: [{
-            id: 7,
-            label: '飞虎队'
-          }, {
-            id: 8,
-            label: '雷霆队'
-          }, {
-            id: 9,
-            label: '星火队'
-          }, {
-            id: 10,
-            label: '冲锋队'
-          }, {
-            id: 11,
-            label: '渠道组'
-          }, {
-            id: 12,
-            label: '政委组'
-          }, {
-            id: 13,
-            label: '测试001'
-          }, {
-            id: 14,
-            label: '战狼组'
-          }]
-            }, {
-            id: 2,
-            label: '媒体运营部',
-        }, {
-            id: 3,
-            label: '增值部'
-        }, {
-            id: 5,
-            label: '财务'
-        }, {
-            id: 6,
-            label: '外部渠道'
-        }
-        ]
-      }]
+         this.data = this.datas
       }
      }
   },
@@ -152,16 +109,16 @@ export default {
     margin-top: 20px;
     padding: 30px;
     .search{
-
+      text-align: left;
     }
     .tree{
         width: 400px;
         .dot {
             width: 1px;
             height: 16px;
-            background: #ff8800;
+            background: #409eff;
             border-radius: 2px;
-            border: 2px solid #ff8800;
+            border: 2px solid #409eff;
         }
         .font_20 {
             font-size: 16px;
@@ -186,13 +143,4 @@ export default {
 }
 </style>
 <style rel='stylesheet/less' lang='less'>
-.operate{
-    .tree {
-        .el-icon-caret-right:before {
-        content: "\E60E";
-        margin: 22px 0;
-        border-left: 1px solid #d9d9d9;
-        }
-  }
-}
 </style>

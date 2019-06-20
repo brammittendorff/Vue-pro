@@ -10,7 +10,7 @@
       :router="true"
       background-color="#0F1014"
       text-color="#777c85"
-      active-text-color="#f80"
+      
     >
       <div>
         <!-- <p v-if="useof<=0||useof==2" style="margin-top:20px" class="title_style">
@@ -23,7 +23,7 @@
             :key="i"
             v-if="(i==0&& isvipmaster||is_leader==1||useof ==2)||i==1"
             :index="item.index"
-            style="padding-left:53px;font-size:12px;min-width:auto;"
+            style="font-size:12px;min-width:auto;"
           >{{ item.name }}</el-menu-item>
         </template>
       </div>

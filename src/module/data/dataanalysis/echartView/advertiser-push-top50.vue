@@ -254,9 +254,9 @@ export default {
   .dot {
     width: 1px;
     height: 20px;
-    background: #ff8800;
+    background: #409eff;
     border-radius: 2px;
-    border: 2px solid #ff8800;
+    border: 2px solid #409eff;
   }
 }
 .conter {

@@ -6,7 +6,7 @@
         </div>
       <div class="g-container">
 
-        <el-form :model="form" label-width="80px">
+        <el-form :model="form" style="text-align:left" size="small" label-width="80px">
           <el-row :gutter="20">
             <el-col :span="7">
               <el-form-item label="账户">
@@ -22,6 +22,9 @@
               <el-form-item label="部门">
                 <el-input v-model="form.name"></el-input>
               </el-form-item>
+            </el-col>
+             <el-col :span="3">
+              <el-button @click="newBack" size="small" type="primary">新增用户</el-button>
             </el-col>
           </el-row>
 
@@ -50,14 +53,10 @@
               </el-form-item>
             </el-col>
             <el-col :span="3">
-              <el-button class="g-fr" type="primary">搜索</el-button>
+              <el-button size="small" type="primary">搜索</el-button>
             </el-col>
           </el-row>
       </el-form>
-
-        <div style="padding-bottom:20px">
-          <el-button @click="newBack" size="mini" type="primary">新增用户</el-button>
-        </div>
         <div class="th-gray-table">
             <el-table
                 :data="tableData"
@@ -269,9 +268,9 @@
         .dot {
             width: 1px;
             height: 23px;
-            background: #ff8800;
+            background: #409eff;
             border-radius: 2px;
-            border: 2px solid #ff8800;
+            border: 2px solid #409eff;
         }
         .font_20 {
             font-size: 20px;

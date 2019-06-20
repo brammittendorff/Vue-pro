@@ -63,7 +63,7 @@
               >媒介备注:&ensp;{{item.medium_remark?item.medium_remark:'---'}}</p>
               <p
                 class="g-fl"
-                style="padding:0px 30px;color:#ff8800"
+                style="padding:0px 30px;color:#409eff"
               >财务注明:&ensp;{{item.finance_remark?item.finance_remark:'---'}}</p>
             </div>
             <table style="min-width:1200px;heigth:120px;overflow:hidden;text-align:left;">
@@ -409,7 +409,7 @@ export default {
         title: "核销排期",
         message: h("div", null, [
           h("p", { class: "c_flex_align_center", style: "padding-left:10px" }, [
-            h( "i", { class: "el-icon-warning", style: "font-size:20px;color: #ff8800;margin-right: 10px;" }, ""),
+            h( "i", { class: "el-icon-warning", style: "font-size:20px;color: #409eff;margin-right: 10px;" }, ""),
             h( "span", { style: "font-size: 14px;" }, "请在确认无误后进行核销操作！" )
           ]),
           h( "p", { style: "font-size: 14px;padding-left:20px;padding-top: 15px;" }, `客户公司：杭州和中` ),
@@ -646,9 +646,9 @@ export default {
   .dot {
     width: 1px;
     height: 23px;
-    background: #ff8800;
+    background: #409eff;
     border-radius: 2px;
-    border: 2px solid #ff8800;
+    border: 2px solid #409eff;
   }
   .font_20 {
     font-size: 20px;
@@ -669,7 +669,7 @@ export default {
     color: #fff;
     // border: 1px solid #e1e1e1;
     border-radius: 5px;
-    background: #ff8800;
+    background: #409eff;
     // -webkit-box-shadow: 2px 2px 5px #926028;
     // box-shadow:2px 2px 5px #926028;
   }
@@ -697,9 +697,9 @@ export default {
   }
   .discount {
     span {
-      border: 1px solid #ff8800;
+      border: 1px solid #409eff;
       border-radius: 6px;
-      color: #ff8800;
+      color: #409eff;
       display: inline-block;
       padding: 0px 3px;
       line-height: normal;
