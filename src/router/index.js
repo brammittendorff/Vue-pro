@@ -6,6 +6,7 @@ import vuex from '@/module/vuex_demo/vuex'
 //主页
 import home from '../components/base_m/Home'
 import homelist from '@/module/home/index'
+import statistics from '../module/home/modle/statistics.vue'
 
 //数据
 import data from '@/module/data/data' //设置
@@ -47,7 +48,7 @@ if (user) {
           children:[
             {
               path:'/home/statistics',
-              // component:statistics,
+              component:statistics,
             },
             {
               path:'/home/owner',
