@@ -1,6 +1,5 @@
 <template>
-
-  <div >
+  <div class="echarts_box">
     <a href="/#/echarts">前往echarts</a>
     <input  v-model="counts" />
     <button @click.stop="add" >增加1</button>
@@ -123,8 +122,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 [v-cloak] {
   display: none;
+}
+.echarts_box{
+  height: calc(~'100vh - 60px');
+  position: relative;
+  top: 60px;
 }
 </style>
