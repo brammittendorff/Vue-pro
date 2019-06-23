@@ -1,29 +1,15 @@
 <template>
- <div class='content'>
+ <div class='echarts_box'>
   <a href="/#/vuex">前往vuex</a>
-    <el-date-picker
-      v-model="value1"
-      type="date"
-      placeholder="选择日期">
-    </el-date-picker>
-    <el-select v-model="value" @change="languge" placeholder="请选择">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value">
-      </el-option>
-    </el-select>
-  <div class='g-container g-box-shadow'>
-      <v-echarts id='echarts' width='800px' height='400px' :option='defaultOption' ></v-echarts>
-  </div>
-
-  <div>
+  <div class="tab-box">
     <div style="float:left">
     <label class="label" v-for="(item,index) in tabdata" :key="index" >{{item.name}}&emsp;<span @click="del(index)">X</span></label>
     <el-input v-if="showinput" class="label" size="samll" v-model="newname" ref="newn" @blur="blur"></el-input>
     </div>
     <el-button style="float:left" @click="add">+新增</el-button>
+  </div>
+  <div >
+      <v-echarts id='echarts' width='800px' height='400px' :option='defaultOption' ></v-echarts>
   </div>
 </div>
 </template>
@@ -205,6 +191,16 @@ export default {
   padding: 10px 0px;
   text-align: center;
   margin: 0px 10px;
+}
+.echarts_box{
+  position: relative;
+  top: 60px;
+  width: 100%;
+  height: calc(~"100vh - 60px");
+}
+.tab-box{
+    width: 500px;
+    margin: 30px auto;
 }
 </style>
 <style rel='stylesheet/less' lang='less'>
