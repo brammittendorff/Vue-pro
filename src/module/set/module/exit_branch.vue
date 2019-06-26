@@ -65,7 +65,8 @@ export default {
       loading: false,
       exitshow: false,
       ruleForm: {
-        exitval: ""
+        exitval: "",
+        node:null,
       },
       mouseid: "",
       datas: datas.data,
@@ -87,7 +88,9 @@ export default {
       this.$router.push({ path: `/set/organization` });
     },
     exit(node, data) {
-      this.ruleForm.exitval = data.label;
+      this.ruleForm.exitval = data.name;
+      this.ruleForm.node = node;
+      console.log(node,data,'aaaaaaaaa')
       this.exitshow = true;
     },
     enter(data) {
@@ -100,16 +103,16 @@ export default {
       this.$refs[formName].validate(val => {
         if (val) {
           this.exitshow = false;
-          const parent = node.parent;
+          const parent = this.ruleForm.node.parent;
           const children = parent.data.children || parent.data;
-          const index = children.findIndex(d => d.id === data.id);
-          this.$set(children[index], "label", this.ruleForm.exitval);
+          const index = children.findIndex(d => d.id === this.ruleForm.node.data.id);
+          this.$set(children[index], "name", this.ruleForm.exitval);
           // this.getdata(this.data)
         }
       });
     },
     append(node, data) {
-      const newChild = { id: id++, label: "新部门" };
+      const newChild = { id: id++, name: "新部门" };
       if (!data.children) {
         this.$set(data, "children", []);
       }
@@ -118,7 +121,7 @@ export default {
     },
 
     remove(node, data) {
-      this.$confirm(`确认删除,${data.label}？`)
+      this.$confirm(`确认删除,${data.name}？`)
         .then(_ => {
           const parent = node.parent;
           const children = parent.data.children || parent.data;
