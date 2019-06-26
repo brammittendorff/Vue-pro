@@ -7,9 +7,9 @@
               v-for="(ele,index) in num" 
               :key="index" 
               v-model="iflogin" 
-              :label="ele"  
+              :label="ele.value"
               border>
-              {{iflogin == '1'?'账户登录':'扫码登录'}}
+              {{ele.lable}}
             </el-radio>
           </div>
           <p class="title">{{iflogin == '1'?'管理员账号登录':'管理员扫码登录'}}</p>
@@ -95,7 +95,8 @@ export default {
         pass: "",
         checkPass: ""
       },
-      num: ["1", "2"],
+      num: [
+        {value:"1",lable:'账号登录'},{value:'2',lable:"扫码登录"}],
       iflogin: "",
       rules: {
         name: [{ required: true, message: "名字不为空", trigger: "blur" }],
