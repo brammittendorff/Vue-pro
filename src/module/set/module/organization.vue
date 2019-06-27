@@ -6,8 +6,9 @@
         :data="data"
         node-key="id"
         draggable
+        highlight-current
         @node-click='tree_click'
-        :default-expanded-keys='[7]'
+        default-expand-all
         :expand-on-click-node="false">
         <span class="custom-tree-node" slot-scope="{ node, data }">
             <span ><i class="el-icon-document"></i>&ensp;{{ data.name }}</span>
@@ -104,6 +105,7 @@
 
 <script>
 import datas from "./data";
+import table from '../../../components/base_m/table'
 export default {
   data() {
     return {
@@ -124,59 +126,7 @@ export default {
         name: [{ required: true, message: "角色名称不能为空", trigger: "blur" }]
       },
       data: datas.data,
-      tableData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          number: 1,
-          des:'这人真的好'
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          number: 2,
-          des:'这人真的好'
-
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          number: 1,
-          des:'这人真的好'
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          number: 3,
-          des:'这人真的好'
-
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          number: 2,
-          des:'这人真的好'
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          number: 1,
-          des:'这人真的好'
-
-        },{
-          date: "2016-05-01",
-          name: "王小虎",
-          number: 2,
-          des:'这人真的好'
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          number: 5,
-          des:'这人真的好'
-
-        }
-      ],
+      tableData:table.data
     };
   },
 
