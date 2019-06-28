@@ -7,7 +7,7 @@
                     <el-option
                     v-for="item in group"
                     :key="item.value"
-                    :label="item.label"
+                    :label="item.name"
                     :value="item.value">
                     </el-option>
                 </el-select>
