@@ -164,6 +164,7 @@
 </template>
 
 <script>
+import table from '../../../components/base_m/table'
     export default{
         data() {
             return {
@@ -193,44 +194,7 @@
                     page:1,
                     page_size:10
                 },
-                tableData:[
-                    {
-                        account:'abcd',
-                        name:'张三',
-                        wxname:'hahah',
-                        department:'大营销中心/冲锋队',
-                        station:'媒介',
-                        created_time:'2019-5-5 18:20:30',
-                        status:'正常'
-                    },
-                    {
-                        account:'abcd',
-                        name:'张三',
-                        wxname:'hahah',
-                        department:'大营销中心/冲锋队',
-                        station:'媒介',
-                        created_time:'2019-5-5 18:20:30',
-                        status:'正常'
-                    },
-                    {
-                        account:'abcd',
-                        name:'张三',
-                        wxname:'hahah',
-                        department:'大营销中心/冲锋队',
-                        station:'媒介',
-                        created_time:'2019-5-5 18:20:30',
-                        status:'正常'
-                    },
-                    {
-                        account:'abcd',
-                        name:'张三',
-                        wxname:'hahah',
-                        department:'大营销中心/冲锋队',
-                        station:'媒介',
-                        created_time:'2019-5-5 18:20:30',
-                        status:'正常'
-                    }
-                ]
+                tableData:table.data
             }
         },
         methods: {
