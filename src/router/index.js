@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import echarts from '@/module/HelloWorld'
+import echarts from '@/module/ShowEcharts'
 import Login from '@/module/login/login'
 import vuex from '@/module/vuex_demo/vuex'
 //主页
