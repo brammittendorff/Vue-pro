@@ -2,7 +2,7 @@ const Router = require("koa-router");
 const router = new Router();
 //页面路由
 router.post('/login',async (ctx) =>{
-  // console.error(ctx.request.body)
+  console.error(process.env.NODE_ENV,process.env.HOSTS,'process.env1111111111111111111111111')
   ctx.body = {
     code:200,
     data:{
