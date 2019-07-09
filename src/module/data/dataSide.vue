@@ -21,7 +21,6 @@
         >
           <el-menu-item
             :key="i"
-            v-if="(i==0&& isvipmaster||is_leader==1||useof ==2)||i==1"
             :index="item.index"
             style="font-size:12px;min-width:auto;"
           >{{ item.name }}</el-menu-item>
@@ -71,13 +70,6 @@ export default {
     //获取管理员身份
     getuseof() {
       let objuserInfo = JSON.parse(localStorage.getItem("userInfo"));
-      this.useof = objuserInfo.group_id;
-      this.is_leader = objuserInfo.is_leader;
-      this.user_name = objuserInfo.username;
-      this.isvipmaster = objuserInfo.is_vip_master;
-      if (!(objuserInfo.is_vip_master||objuserInfo.is_leader==1||objuserInfo.group_id ==2)) {
-        this.$router.push({ path: "/data/monthly/pre_month" });
-      }
     }
   },
   mounted() {
