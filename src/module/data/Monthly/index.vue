@@ -9,7 +9,7 @@
         @select="selectNav"
         mode="horizontal"
        >
-    <el-menu-item v-if="userInfoData.group_id" index="/data/monthly/pre_month">业绩月报</el-menu-item>
+    <el-menu-item index="/data/monthly/pre_month">业绩月报</el-menu-item>
     </el-menu>
     <template>
       <div>
