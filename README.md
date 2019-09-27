@@ -2,6 +2,8 @@
 
 ## vue-vuex-koa-axios-echarts-canvas-element技术栈
 
+  **Author: "@baby张 <babybrotherzb@gmail.com>"**
+
 ```java
 #加载依赖包
 1.npm install
